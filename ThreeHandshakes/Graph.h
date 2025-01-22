@@ -1,6 +1,7 @@
 #pragma once
+#include <iostream>
 
-#define SIZE 20
+#define SIZE 10
 
 class Graph {
 public:
@@ -14,9 +15,7 @@ public:
     // удаление ребра
     void delEdge(int v1, int v2);
 
-    friend bool test(const Graph& g);
-    void dummy1(int vnumber);
-    void dummy2(int v1, int v2);
+
 private:
     bool edgeExists(int v1, int v2);
     bool vertexExists(int v);
@@ -25,4 +24,5 @@ private:
 
     int vertexes[SIZE]; // хранилище вершин
     int vertexCount; // количество добавленных вершин
+    std::string name [SIZE];
 };

@@ -31,3 +31,31 @@ bool Graph::vertexExists(int v)
             return true;
     return false;
 }
+//Удаляем вершину
+void Graph::delVertex(int vnumber)
+{
+   
+    for (int i = 0; i < SIZE; i++)
+    {
+        matrix[i][vnumber] = 0;
+        matrix[vnumber][i] = 0;
+    }
+    
+    int foundIndex = -1;
+    for (int i = 0; i < vertexCount; i++)
+    {
+        if (vertexes[i] == vnumber)
+            foundIndex = i;
+    }
+    vertexCount--;
+    for (int i = foundIndex; i < vertexCount; i++)
+    {
+        vertexes[i] = vertexes[i + 1];
+    }
+}
+//удаляем ребро
+void Graph::delEdge(int v1, int v2)
+{
+    matrix[v1][v2] = 0;
+    matrix[v2][v1] = 0;
+}
