@@ -1,28 +1,32 @@
 #pragma once
 #include <iostream>
+#include <vector>
 
-#define SIZE 10
+#define SIZE 20
 
 class Graph {
 public:
     Graph();
     // добавление вершины
-    void addVertex(int vnumber);
+    void addVertex(std::string newName);
     // добавление ребра
-    void addEdge(int v1, int v2, int weight);
+    void addEdge(std::string firstName, std::string secondName);
     // удаление вершины
-    void delVertex(int vnumber);
+    void delVertex(std::string _name);
     // удаление ребра
-    void delEdge(int v1, int v2);
-
+    void delEdge(std::string firstName, std::string secondName);
+    //поиск трех рукопожатий
+    void threeHandshakes(std::string _name);
 
 private:
-    bool edgeExists(int v1, int v2);
-    bool vertexExists(int v);
+    //индекс имени 
+    int getIndex(std::string _name);
+    bool edgeExists(std::string firstName, std::string secondName);
+    bool vertexExists(std::string _name);
+    void depthInner(std::string current, bool visited[], int a);
 
     int matrix[SIZE][SIZE]; // матрица смежности
 
-    int vertexes[SIZE]; // хранилище вершин
     int vertexCount; // количество добавленных вершин
-    std::string name [SIZE];
+    std::string vertexName[SIZE] = {"noName"};
 };
